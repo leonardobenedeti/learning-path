@@ -22,8 +22,6 @@ class LearningPathRepositoryImpl implements LearningPathRepository {
   @override
   Future<Either<Failure, PathEntity>> getLearningPath() async {
     try {
-      /// Force loading time to simulate network delay
-      await Future.delayed(const Duration(seconds: 1));
       final pathModel = await localDataSource.getLearningPath();
       return Right(pathModel);
     } catch (e) {
