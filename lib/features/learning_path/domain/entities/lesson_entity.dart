@@ -1,12 +1,13 @@
 import 'package:equatable/equatable.dart';
 
+import 'lesson_status.dart';
 import 'task_entity.dart';
 
 class LessonEntity extends Equatable {
   final String id;
   final String title;
   final int position;
-  final String status;
+  final LessonStatus status;
   final int xp;
   final int estimatedMinutes;
   final List<TaskEntity> tasks;

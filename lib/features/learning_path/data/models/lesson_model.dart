@@ -1,4 +1,5 @@
 import '../../domain/entities/lesson_entity.dart';
+import '../../domain/entities/lesson_status.dart';
 import 'task_model.dart';
 
 class LessonModel extends LessonEntity {
@@ -17,7 +18,7 @@ class LessonModel extends LessonEntity {
       id: json['id'],
       title: json['title'],
       position: json['position'],
-      status: json['status'],
+      status: LessonStatus.fromString(json['status']),
       xp: json['xp'],
       estimatedMinutes: json['estimatedMinutes'],
       tasks: (json['tasks'] as List)
@@ -31,7 +32,7 @@ class LessonModel extends LessonEntity {
       'id': id,
       'title': title,
       'position': position,
-      'status': status,
+      'status': status.name,
       'xp': xp,
       'estimatedMinutes': estimatedMinutes,
       'tasks': tasks.map((task) => (task as TaskModel).toJson()).toList(),
