@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'features/learning_path/presentation/screens/path_screen.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(
+    ProviderScope(retry: (retryCount, error) => null, child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {

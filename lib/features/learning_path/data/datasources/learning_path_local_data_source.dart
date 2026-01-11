@@ -15,6 +15,9 @@ class LearningPathLocalDataSourceImpl implements LearningPathLocalDataSource {
 
   @override
   Future<PathModel> getLearningPath() async {
+    /// Uncomment the line below to force error
+    // throw Exception('Force error when try to get learning path');
+
     final prefs = await SharedPreferences.getInstance();
     final cachedData = prefs.getString(_pathKey);
 

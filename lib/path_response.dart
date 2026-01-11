@@ -9,7 +9,7 @@ final pathResponse = {
         "id": "lesson_1",
         "title": "Dar e receber boas-vindas",
         "position": 1,
-        "status": "completed",
+        "status": "current",
         "xp": 20,
         "estimatedMinutes": 5,
         "tasks": [
@@ -37,7 +37,7 @@ final pathResponse = {
         "id": "lesson_2",
         "title": "Se apresentar",
         "position": 2,
-        "status": "current",
+        "status": "locked",
         "xp": 25,
         "estimatedMinutes": 6,
         "tasks": [

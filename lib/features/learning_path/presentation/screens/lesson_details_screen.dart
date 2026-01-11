@@ -36,10 +36,6 @@ class _LessonDetailsScreenState extends ConsumerState<LessonDetailsScreen> {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.close, size: 28),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
         actions: [
           if (widget.lesson.status.isCompleted)
             IconButton(
