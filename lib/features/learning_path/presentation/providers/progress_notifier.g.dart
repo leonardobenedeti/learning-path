@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'path_notifier.dart';
+part of 'progress_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,44 +9,44 @@ part of 'path_notifier.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(PathNotifier)
-const pathProvider = PathNotifierProvider._();
+@ProviderFor(ProgressNotifier)
+const progressProvider = ProgressNotifierProvider._();
 
-final class PathNotifierProvider
-    extends $AsyncNotifierProvider<PathNotifier, PathEntity> {
-  const PathNotifierProvider._()
+final class ProgressNotifierProvider
+    extends $AsyncNotifierProvider<ProgressNotifier, List<String>> {
+  const ProgressNotifierProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'pathProvider',
+        name: r'progressProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$pathNotifierHash();
+  String debugGetCreateSourceHash() => _$progressNotifierHash();
 
   @$internal
   @override
-  PathNotifier create() => PathNotifier();
+  ProgressNotifier create() => ProgressNotifier();
 }
 
-String _$pathNotifierHash() => r'82fce4ce702d08967c6db430c94300202e65fd08';
+String _$progressNotifierHash() => r'99c5d029000c11caa1c8d294b6d50f42f311a2f2';
 
-abstract class _$PathNotifier extends $AsyncNotifier<PathEntity> {
-  FutureOr<PathEntity> build();
+abstract class _$ProgressNotifier extends $AsyncNotifier<List<String>> {
+  FutureOr<List<String>> build();
   @$mustCallSuper
   @override
   void runBuild() {
     final created = build();
-    final ref = this.ref as $Ref<AsyncValue<PathEntity>, PathEntity>;
+    final ref = this.ref as $Ref<AsyncValue<List<String>>, List<String>>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<AsyncValue<PathEntity>, PathEntity>,
-              AsyncValue<PathEntity>,
+              AnyNotifier<AsyncValue<List<String>>, List<String>>,
+              AsyncValue<List<String>>,
               Object?,
               Object?
             >;

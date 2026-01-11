@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../providers/path_notifier.dart';
 import '../widgets/lesson_node.dart';
+import 'lesson_details_screen.dart';
 
 class PathScreen extends ConsumerWidget {
   const PathScreen({super.key});
@@ -37,7 +38,18 @@ class PathScreen extends ConsumerWidget {
                 hasLineAbove: index > 0,
                 hasLineBelow: index < lessons.length - 1,
                 onTap: () {
-                  // TODO(leo): Navigate to tasks
+                  if (!lesson.status.isLocked) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            LessonDetailsScreen(lesson: lesson),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('This lesson is locked!')),
+                    );
+                  }
                 },
               );
             },
@@ -45,6 +57,46 @@ class PathScreen extends ConsumerWidget {
         },
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, stack) => Center(child: Text('Error: $err')),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+          child: TextButton.icon(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Reset Progress?'),
+                  content: const Text(
+                    'This will lock all lessons and reset your learning path to the beginning. This action cannot be undone.',
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        ref.read(pathProvider.notifier).resetPath();
+                        Navigator.pop(context);
+                      },
+                      style: TextButton.styleFrom(foregroundColor: Colors.red),
+                      child: const Text('Reset Everything'),
+                    ),
+                  ],
+                ),
+              );
+            },
+            icon: const Icon(Icons.history_rounded, color: Colors.redAccent),
+            label: const Text(
+              'Reset All Progress',
+              style: TextStyle(
+                color: Colors.redAccent,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
